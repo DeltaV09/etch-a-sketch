@@ -18,4 +18,14 @@ function makeBoxes(dimension = 16) {
     }
 }
 
-makeBoxes();
+makeBoxes(99);
+
+container.addEventListener("mouseover", (event) => {
+    let target = event.target;
+    target.style.background = "blue";
+})
+
+container.addEventListener("mouseout", (event) => {
+    let target = event.target;
+    target.style.background = "aqua";
+})
