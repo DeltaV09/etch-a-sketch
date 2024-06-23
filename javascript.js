@@ -7,6 +7,7 @@ const container = document.querySelector(".container");
 function makeBoxes(dimension = 16) {
     container.replaceChildren();
     container.style.background = "white";
+    container.style.borderStyle = "solid";
     for (let i = 0; i < dimension; i++) {
         const newRow = document.createElement("div");
         newRow.id = "r" + i;
@@ -15,7 +16,7 @@ function makeBoxes(dimension = 16) {
         for(let j = 0; j < dimension; j++) {
             const newDiv = document.createElement("div");
             newDiv.id = i + "," + j;
-            newDiv.setAttribute("style","flex: 1; border-style: solid; border-color: black");
+            newDiv.setAttribute("style","flex: 1; border-style: solid; border-color: black; opacity:0;");
             newRow.appendChild(newDiv);            
         }
     }
@@ -33,10 +34,18 @@ reset.addEventListener("click", (event) => {
 
 container.addEventListener("mouseover", (event) => {
     let target = event.target;
-    target.style.background = "blue";
+    if(!target.classList.contains("container")) {
+        target.style.background = "blue";
+        let opacity = parseFloat(target.style.opacity);
+        if (opacity < 1) {
+        target.style.opacity = opacity + 0.1;
+        }
+    }
 })
 
 container.addEventListener("mouseout", (event) => {
     let target = event.target;
-    target.style.background = "aqua";
+    if(!target.classList.contains("container")) {
+        target.style.background = "aqua";
+    }
 })
