@@ -1,5 +1,5 @@
 //etch-a-sketch
-const start = document.querySelector("#start");
+const reset = document.querySelector("#reset");
 const container = document.querySelector(".container");
 
 
@@ -21,7 +21,9 @@ function makeBoxes(dimension = 16) {
     }
 }
 
-start.addEventListener("click", (event) => {
+makeBoxes();
+
+reset.addEventListener("click", (event) => {
     let dimension = prompt("Enter an integer between 1 and 100");
     while (dimension < 1 || dimension > 100) {
         dimension = prompt("Please only enter integers between 1 and 100");
